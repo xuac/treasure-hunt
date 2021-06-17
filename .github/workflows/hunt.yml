@@ -1,0 +1,35 @@
+name: Hunt
+
+on:
+  workflow_dispatch:
+    inputs:
+      invite:
+        description: Invite Code
+        required: true
+
+jobs:
+  hunter:
+    name: HUNTER${{ matrix.hunter }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        hunter: [1, 2, 3, 4, 5]
+
+    steps:
+      - name: Setup Repo
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+
+      - name: Install Dependencies
+        run: |
+          yarn
+          sudo apt install -y $(cat deps.txt)
+
+      - name: Start Treasure Hunt
+        run: yarn start ${{ github.event.inputs.invite }}
