@@ -1,4 +1,4 @@
-> Welp, we drove it into the ground. Sign-ups are now closed and all registrations are going to a waiting list.
+> **UPDATE**: Sign-ups are now open again!
 
 # Treasure Hunt
 
